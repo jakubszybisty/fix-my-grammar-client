@@ -1,0 +1,25 @@
+.content {
+  text-align: center;
+}
+
+input {
+  text-align: center;
+  width: 20%;
+  margin-left: 40%;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin: 0 auto;
+  width:80% /* value of your choice which suits your alignment */
+}
+
+.form-inline {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-position:inside
+}

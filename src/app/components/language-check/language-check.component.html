@@ -1,0 +1,34 @@
+<div class="content">
+<p>
+  Enter any text you would like to be checked for style repetitions!
+</p>
+<div>
+  <div class="form-group">
+    <textarea [(ngModel)]="text" class="form-control" style="width: 500px" placeholder="Enter the text" rows="4"></textarea>
+  </div>
+  <button (click)="checkForRepetitions(text)" class="btn btn-primary">Check it</button>
+
+  <div *ngIf="!isEmpty(repetitions)">
+    <br>
+    <h3>Found repetitions:</h3>
+    <br>
+    <span *ngFor="let rep of repetitions">
+      <b *ngFor="let word of rep.repetitions; let isLast=last">
+      {{word.word}}{{isLast ? '' : ', '}}
+      </b>
+      <span *ngIf="rep.sentence != 'Edge sentence'">
+        in sentence  <i>{{rep.sentence}}</i>
+      </span>
+      <span *ngIf="rep.sentence === 'Edge sentence'">
+         - next sentence should not be started with any of the last 2 words of former sentence
+      </span>
+      <br>
+    </span>
+  </div>
+
+  <div *ngIf="noResults" class="form-group">
+    <br>
+    <h3>No repetitions were found. Text is stylistically correct.</h3>
+  </div>
+</div>
+</div>

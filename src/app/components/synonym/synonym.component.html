@@ -1,0 +1,31 @@
+<div class="content">
+  <p>
+    Select language and enter any word you like
+  </p>
+  <div>
+    <div [(ngModel)]="language" ngbRadioGroup name="radioBasic">
+      <label class="btn btn-primary">
+        <input type="radio" [(ngModel)]="language" name="lang" value="pl"> Polish
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" [(ngModel)]="language" name="lang" value="en"> English
+      </label>
+    </div>
+    <input name="word" [(ngModel)]="targetWord" type="text" class="form-control" placeholder="Enter a word">
+  </div>
+  <button (click)="getSynonyms(targetWord, language)" class="btn btn-primary">Find synonyms</button>
+  <div *ngIf="synonyms?.length > 0" class="form-group">
+    <br>
+    <h3>Found synonyms:</h3>
+    <ul>
+      <li *ngFor="let synonym of synonyms">
+        {{ synonym }}
+        <!--<div [innerHTML]="synonym | synonymFilter:targetWord"></div>-->
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="noResults" class="form-group">
+    <br>
+    <h3>No synonyms were found. Perhaps you have made a typo in a word?</h3>
+  </div>
+</div>
